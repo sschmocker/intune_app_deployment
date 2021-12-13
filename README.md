@@ -17,6 +17,7 @@ Those Packages only contain a dummy .txt File wich is needed for intune, as intu
 - Run the App Selector Script
 - Choose your apps
 - Let the script do its magic
+- Upload the Files from the Output Directory to your intune Tenant 
 
 # Commands in Intune
 
