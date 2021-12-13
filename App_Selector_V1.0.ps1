@@ -97,7 +97,7 @@ do
             write-host "Config of Package starts now"
             timeout 3
             ######ADOBE#####
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\AdobeReader\AdobeReader_Source" -s "Adobe Reader DC.txt" -o "$outputDirectory" -q
 
          }
@@ -107,7 +107,7 @@ do
             write-host "Config of Package starts now"
             timeout 3
             ######App Installer#####
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\AppInstaller_Win32\AppInstaller_Source" -s "Microsoft Desktop App Installer.ps1" -o "$outputDirectory" -q
 
 
@@ -118,7 +118,7 @@ do
             write-host "Config of Package starts now"
             timeout 3
             ######Citrix#####
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CitrixWorkspace\CitrixWorkspace_Source" -s "Citrix Workspace.txt" -o "$outputDirectory" -q
 
          }
@@ -128,7 +128,7 @@ do
             write-host "Config of Package starts now"
             timeout 3
             ######CompanyPortal#####
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CompanyPortal\CompanyPortal_Source" -s "Microsoft Company Portal.ps1" -o "$outputDirectory" -q
 
 
@@ -139,7 +139,7 @@ do
             write-host "Config of Package starts now"
             timeout 3             
             ######FireFox#########
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             .\IntuneWinAppUtil -c "C:\intune\Applications\Sources\MozillaFirefox\MozillaFirefox_Source" -s "MozillaFirefox.txt" -o "$outputDirectory" -q
                         
          }
@@ -149,7 +149,7 @@ do
             write-host "Config of Package starts now"
             timeout 3
             ######FortiClient#####
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\FortiClient_SSLVPN\FortiClient_Source" -s "FortiClient_SSL_VPN.txt" -o "$outputDirectory" -q
 
 
@@ -186,7 +186,7 @@ $script=@"
 
 
             cls
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "$sourceFolderForti" -s "FortiClient_SSL_VPN_Config.ps1" -o "$outputDirectory" -q
             cls
 
@@ -205,7 +205,7 @@ $script=@"
             write-host "Config of Package starts now"
             timeout 3
             ######Google Chrome######
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\GoogleChrome\GoogleChrome_Source" -s "Google Chrome.txt" -o "$outputDirectory" -q
            
 
@@ -218,32 +218,32 @@ $script=@"
              
              cls
              ######ADOBE#####
-             cd "C:\intune\Applications"
+             cd "C:\intune\Applications\Sources"
              ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\AdobeReader\AdobeReader_Source" -s "Adobe Reader DC.txt" -o "$outputDirectory" -q
              cls
 
              ######App Installer#####
-             cd "C:\intune\Applications"
+             cd "C:\intune\Applications\Sources"
              ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\AppInstaller_Win32\AppInstaller_Source" -s "Microsoft Desktop App Installer.ps1" -o "$outputDirectory" -q
              cls
 
              ######Citrix#####
-             cd "C:\intune\Applications"
+             cd "C:\intune\Applications\Sources"
              ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CitrixWorkspace\CitrixWorkspace_Source" -s "Citrix Workspace.txt" -o "$outputDirectory" -q
              cls
 
              ######CompanyPortal#####
-             cd "C:\intune\Applications"
+             cd "C:\intune\Applications\Sources"
              ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CompanyPortal\CompanyPortal_Source" -s "Microsoft Company Portal.ps1" -o "$outputDirectory" -q
              cls
              
              ######FireFox#########
-             cd "C:\intune\Applications"
+             cd "C:\intune\Applications\Sources"
              .\IntuneWinAppUtil -c "C:\intune\Applications\Sources\MozillaFirefox\MozillaFirefox_Source" -s "MozillaFirefox.txt" -o "$outputDirectory" -q
              cls
 
              ######FortiClient#####
-             cd "C:\intune\Applications"
+             cd "C:\intune\Applications\Sources"
              ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\FortiClient_SSLVPN\FortiClient_Source" -s "FortiClient_SSL_VPN.txt" -o "$outputDirectory" -q
              cls
 
@@ -282,7 +282,7 @@ $script=@"
 
 
             cls
-            cd "C:\intune\Applications"
+            cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "$sourceFolderForti" -s "FortiClient_SSL_VPN_Config.ps1" -o "$outputDirectory" -q
             cls
 
@@ -292,7 +292,7 @@ $script=@"
 #-----------------------------------------------------------------------------------------------------------------#
              
              ######Google Chrome######
-             cd "C:\intune\Applications"
+             cd "C:\intune\Applications\Sources"
              ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\GoogleChrome\GoogleChrome_Source" -s "Google Chrome.txt" -o "$outputDirectory" -q
              cls
 
