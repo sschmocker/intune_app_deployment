@@ -17,23 +17,33 @@ Write-Host ""
 pause
 cls
 
-Write-Host ""
-Write-Host "First we need to Download the sources from Github"
-Write-Host ""
-Write-Host "Press Enter to Confirm or cancel the Script to leave"
-Write-Host ""
-pause
+Write-Host "Checking if sources are already available"
 
-$Location = "C:\intune"
-$Name = "applications"
+
+$Folder = 'C:\intune\'
+timeout 2
+Write-Host ""
+cls
+if (Test-Path -Path $Folder) {
+    "Path '$Folder' exists! Proceeding with Script"
+    Write-Host ""
+    pause
+    cls
+} else {
+    "Path doesn't exist. We need to Download the sources from Github
+    Press Enter to Confirm or cancel the script to leave"
+    pause
+    
+    #Download of Sources
+    $Location = "C:\intune"
+    $Name = "applications"
 
     # Force to create a zip file 
     $ZipFile = "$location\$Name.zip"
     New-Item $ZipFile -ItemType File -Force
  
     $RepositoryZipUrl = "https://github.com/sschmocker/intune_app_deployment/archive/refs/heads/main.zip"
-    #$RepositoryZipUrl = "https://github.com/sschmocker/intune_app_deployment"
-
+    
     # download the zip 
     Write-Host 'Starting downloading the GitHub Repository'
     Invoke-RestMethod -Uri $RepositoryZipUrl -OutFile $ZipFile
@@ -58,8 +68,21 @@ Write-Host ""
 pause
 cls
 
+}
 
-$customer = Read-Host "Please insert customer name"
+
+Write-Host "Next you will need to enter the customer name"
+Write-Host ""
+
+
+$customer = Read-Host "customer Name"
+cls
+
+Write-Host "Going to Main Menu now"
+Write-Host ""
+Timeout 2
+
+
 $outputDirectory = "C:\intune\Applications\Sources\x_Output_Files\$customer"
 
 
