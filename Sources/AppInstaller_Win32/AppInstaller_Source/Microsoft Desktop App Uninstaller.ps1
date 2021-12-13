@@ -1,0 +1,1 @@
+Remove-AppPackage -Package "Microsoft.DesktopAppInstaller_1.16.12986.0_x64__8wekyb3d8bbwe"
