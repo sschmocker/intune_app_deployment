@@ -33,16 +33,20 @@ The commands that intune needs for the installation/uninstallation via winget is
 | Mozilla Firefox         | Mozilla.Firefox             | 
 | FortiClient             | Fortinet.FortiClientVPN     |
 
-- cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id "WINGET ID OF PACKAGE" --silent --accept-package-agreements --accept-source-agreements"
-- cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe uninstall --id "WINGET ID OF PACKAGE" --silent --accept-source-agreements"
+## Commands for APP's via winget
+### Install
+> - cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id "WINGET ID OF PACKAGE" --silent --accept-package-agreements --accept-source-agreements"
+
+### Uninstall
+> - cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe uninstall --id "WINGET ID OF PACKAGE" --silent --accept-source-agreements"
 
 
+## Command for FortiClient Configuration
+> - Powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -Command .\FortiClient_SSLVPN_StartPS_64bit.ps1
 
+## Command for Company Portal 
+> - PowerShell.exe -windowstyle hidden -ExecutionPolicy Bypass -Command & '.\Microsoft Company Portal.ps1'
 
-# Commands for Company Portal & APP installer
-Company Portal:
-- PowerShell.exe -windowstyle hidden -ExecutionPolicy Bypass -Command & '.\Microsoft Company Portal.ps1'
-
-App installer:
-- Powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -Command & '.\Microsoft Desktop App Installer.ps1'
+## Command for APP installer
+> - Powershell.exe -windowstyle hidden -ExecutionPolicy Bypass -Command & '.\Microsoft Desktop App Installer.ps1'
 
