@@ -9,6 +9,14 @@ The following Packages will be installed with winget on the client side when dep
 - Firefox
 - FortiClient
 
+| Name                    | ID                          |
+| :-----------------------| :---------------------------|
+| Adobe Acrobat Reader DC | Adobe.Acrobat.Reader.64-bit |
+| Citrix Workspace        | Citrix.Workspace            |
+| Google Chrome           | Google.Chrome               |
+| Mozilla Firefox         | Mozilla.Firefox             | 
+| FortiClient             | Fortinet.FortiClientVPN     |
+
 Those Packages only contain a dummy .txt File wich is needed for intune, as intune otherwise will not allow to create them.
 
 
