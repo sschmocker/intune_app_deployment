@@ -9,13 +9,6 @@ The following Packages will be installed with winget on the client side when dep
 - Firefox
 - FortiClient
 
-| Name                    | ID                          |
-| :-----------------------| :---------------------------|
-| Adobe Acrobat Reader DC | Adobe.Acrobat.Reader.64-bit |
-| Citrix Workspace        | Citrix.Workspace            |
-| Google Chrome           | Google.Chrome               |
-| Mozilla Firefox         | Mozilla.Firefox             | 
-| FortiClient             | Fortinet.FortiClientVPN     |
 
 Those Packages only contain a dummy .txt File wich is needed for intune, as intune otherwise will not allow to create them.
 
@@ -32,8 +25,17 @@ Those Packages only contain a dummy .txt File wich is needed for intune, as intu
 The commands that intune needs for the installation/uninstallation via winget is as follows: -->
 "Keep in mind to input the winget ID of the package you want to install"
 
+| Name                    | ID                          |
+| :-----------------------| :---------------------------|
+| Adobe Acrobat Reader DC | Adobe.Acrobat.Reader.64-bit |
+| Citrix Workspace        | Citrix.Workspace            |
+| Google Chrome           | Google.Chrome               |
+| Mozilla Firefox         | Mozilla.Firefox             | 
+| FortiClient             | Fortinet.FortiClientVPN     |
+
 - cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe install --id "WINGET ID OF PACKAGE" --silent --accept-package-agreements --accept-source-agreements"
 - cmd /c "pushd "%ProgramW6432%\WindowsApps\Microsoft.DesktopAppInstaller_*_x64__8wekyb3d8bbwe" && AppInstallerCLI.exe uninstall --id "WINGET ID OF PACKAGE" --silent --accept-source-agreements"
+
 
 
 
