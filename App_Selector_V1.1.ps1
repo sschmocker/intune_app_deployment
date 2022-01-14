@@ -144,6 +144,124 @@ do
             cd "C:\intune\Applications\Sources"
             ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CitrixWorkspace\CitrixWorkspace_Source" -s "Citrix Workspace.txt" -o "$outputDirectory" -q
 
+#------------------------------------------------------------------------------------------------------------------#
+####################################################Citrix CONFIG###################################################
+#------------------------------------------------------------------------------------------------------------------#
+
+
+Write-Host "We will now Configure Citrix Workspace"
+Write-Host "Please enter the needed variables" 
+Write-Host ""
+$accountName = Read-Host "Enter Accountname"
+$name = Read-Host "Enter Name of Citrix instance"
+$username = Read-Host "Enter Username for Citrix instance"
+$psregvalue = 'regedit /s "Citrix_config.reg"'
+$Path = ".\CitrixWorkspace_Configuration_source\$name"
+
+$value = @"
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Citrix\Dazzle]
+"FirstRunInstalledDate"="16.12.2021 22:49:23"
+"CurrentAccount"="$accountName"
+
+[HKEY_CURRENT_USER\Software\Citrix\Dazzle\Sites]
+
+[HKEY_CURRENT_USER\Software\Citrix\Dazzle\Sites\$accountName]
+"type"="DS"
+"name"="$name"
+"configUrl"="https://appstore.$name.ch/Citrix/$name/discovery"
+"ConfiguredByAdministrator"="False"
+"cloudAccount"="False"
+"enabledByAdmin"="True"
+"description"=""
+"serviceRecordId"="2017144056"
+"SubStoreOf"=""
+"resourcesUrl"="https://appstore.$name.ch/Citrix/$name/resources/v2"
+"sessionUrl"="https://appstore.$name.ch/Citrix/$name/sessions/v1/available"
+"storeUrl"="https://appstore.$name.ch/Citrix/$($name)Web/receiver.html"
+"cookiesUrl"="https://appstore.$name.ch/Citrix/$($name)Web/CitrixAuth/Login"
+"authEndpointUrl"="https://appstore.$name.ch/Citrix/$($name)Auth/endpoints/v1"
+"tokenValidationUrl"="https://appstore.$name.ch/Citrix/$($name)Auth/auth/v1/token/validate/"
+"tokenServiceUrl"="https://appstore.$name.ch/Citrix/$($name)Auth/auth/v1/token"
+"LastRefreshTime"="17.12.2021 09:17:57"
+"userName"="$username"
+"isPreviousLogoutExplicit"="False"
+"OfflineWeb"="True"
+
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\FtuUrl]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\FtuUrl\2017144056]
+"Addr"="https://appstore.$name.ch"
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056]
+"Name"="$name"
+"Addr"="https://appstore.$name.ch/Citrix/$name/discovery"
+"SRType"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\External]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\External\Addr0]
+"Address"="http://ping.citrix.com"
+"DSconfirmed"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\External\Addr1]
+"Address"="https://portal.$name.ch/"
+"DSconfirmed"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\Internal]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\Internal\Addr0]
+"Address"="https://appstore.$name.ch/"
+"DSconfirmed"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Gateways]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Gateways\portal.$name.ch]
+"LogonPoint"="https://portal.$name.ch/"
+"Edition"=dword:00000002
+"Auth"=dword:00000002
+"AGMode"=dword:00000000
+"TrustedByUser"=dword:00000000
+"TrustedByDS"=dword:00000001
+"IsDefault"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Properties]
+"LockedDown"="True"
+"storeConfigurationStatus"="configDone"
+
+"@
+
+
+
+if (!(Test-Path $Path))
+{
+New-Item -Path ".\CitrixWorkspace_Configuration\CitrixWorkspace_Configuration_source\$($name)" -Name "Citrix_config.reg" -ItemType "file" -Value $value -Force
+New-Item -Path ".\CitrixWorkspace_Configuration\CitrixWorkspace_Configuration_source\$($name)" -Name "Citrix Workspace Configuration.ps1" -ItemType "file" -Value $psregvalue -Force
+
+}
+else
+{
+Write-Host "File already exists"
+}
+
+./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CitrixWorkspace_Configuration\CitrixWorkspace_Configuration_Source\$($name)" -s "Citrix Workspace Configuration.ps1" -o "$outputDirectory" -q
+
+            
+#-----------------------------------------------------------------------------------------------------------------#
+###################################################################################################################
+#-----------------------------------------------------------------------------------------------------------------#
+
+
+
          }
          
          '4' {
@@ -254,6 +372,123 @@ $script=@"
              cd "C:\intune\Applications\Sources"
              ./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CitrixWorkspace\CitrixWorkspace_Source" -s "Citrix Workspace.txt" -o "$outputDirectory" -q
              cls
+
+             #------------------------------------------------------------------------------------------------------------------#
+####################################################Citrix CONFIG###################################################
+#------------------------------------------------------------------------------------------------------------------#
+
+
+Write-Host "We will now Configure Citrix Workspace"
+Write-Host "Please enter the needed variables" 
+Write-Host ""
+$accountName = Read-Host "Enter Accountname"
+$name = Read-Host "Enter Name of Citrix instance"
+$username = Read-Host "Enter Username for Citrix instance"
+$psregvalue = 'regedit /s "Citrix_config.reg"'
+$Path = ".\CitrixWorkspace_Configuration_source\$name"
+
+$value = @"
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Citrix\Dazzle]
+"FirstRunInstalledDate"="16.12.2021 22:49:23"
+"CurrentAccount"="$accountName"
+
+[HKEY_CURRENT_USER\Software\Citrix\Dazzle\Sites]
+
+[HKEY_CURRENT_USER\Software\Citrix\Dazzle\Sites\$accountName]
+"type"="DS"
+"name"="$name"
+"configUrl"="https://appstore.$name.ch/Citrix/$name/discovery"
+"ConfiguredByAdministrator"="False"
+"cloudAccount"="False"
+"enabledByAdmin"="True"
+"description"=""
+"serviceRecordId"="2017144056"
+"SubStoreOf"=""
+"resourcesUrl"="https://appstore.$name.ch/Citrix/$name/resources/v2"
+"sessionUrl"="https://appstore.$name.ch/Citrix/$name/sessions/v1/available"
+"storeUrl"="https://appstore.$name.ch/Citrix/$($name)Web/receiver.html"
+"cookiesUrl"="https://appstore.$name.ch/Citrix/$($name)Web/CitrixAuth/Login"
+"authEndpointUrl"="https://appstore.$name.ch/Citrix/$($name)Auth/endpoints/v1"
+"tokenValidationUrl"="https://appstore.$name.ch/Citrix/$($name)Auth/auth/v1/token/validate/"
+"tokenServiceUrl"="https://appstore.$name.ch/Citrix/$($name)Auth/auth/v1/token"
+"LastRefreshTime"="17.12.2021 09:17:57"
+"userName"="$username"
+"isPreviousLogoutExplicit"="False"
+"OfflineWeb"="True"
+
+Windows Registry Editor Version 5.00
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\FtuUrl]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\FtuUrl\2017144056]
+"Addr"="https://appstore.$name.ch"
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056]
+"Name"="$name"
+"Addr"="https://appstore.$name.ch/Citrix/$name/discovery"
+"SRType"=dword:00000000
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\External]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\External\Addr0]
+"Address"="http://ping.citrix.com"
+"DSconfirmed"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\External\Addr1]
+"Address"="https://portal.$name.ch/"
+"DSconfirmed"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\Internal]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Beacons\Internal\Addr0]
+"Address"="https://appstore.$name.ch/"
+"DSconfirmed"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Gateways]
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Gateways\portal.$name.ch]
+"LogonPoint"="https://portal.$name.ch/"
+"Edition"=dword:00000002
+"Auth"=dword:00000002
+"AGMode"=dword:00000000
+"TrustedByUser"=dword:00000000
+"TrustedByDS"=dword:00000001
+"IsDefault"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Citrix\Receiver\SR\Store\2017144056\Properties]
+"LockedDown"="True"
+"storeConfigurationStatus"="configDone"
+
+"@
+
+
+
+if (!(Test-Path $Path))
+{
+New-Item -Path ".\CitrixWorkspace_Configuration\CitrixWorkspace_Configuration_source\$($name)" -Name "Citrix_config.reg" -ItemType "file" -Value $value -Force
+New-Item -Path ".\CitrixWorkspace_Configuration\CitrixWorkspace_Configuration_source\$($name)" -Name "Citrix Workspace Configuration.ps1" -ItemType "file" -Value $psregvalue -Force
+
+}
+else
+{
+Write-Host "File already exists"
+}
+
+./IntuneWinAppUtil -c "C:\intune\Applications\Sources\CitrixWorkspace_Configuration\CitrixWorkspace_Configuration_Source\$($name)" -s "Citrix Workspace Configuration.ps1" -o "$outputDirectory" -q
+
+            
+#-----------------------------------------------------------------------------------------------------------------#
+###################################################################################################################
+#-----------------------------------------------------------------------------------------------------------------#
+
 
              ######CompanyPortal#####
              cd "C:\intune\Applications\Sources"
